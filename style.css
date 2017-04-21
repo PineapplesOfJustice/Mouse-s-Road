@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Amatic+SC|Satisfy|Covered+By+Your+Grace');
+
+#texto{
+  text-align: center;
+  font-family: Covered By Your Grace;
+  color: black;
+  font-size: 150%;
+  background-color: rgba(255,182,193,0.6);
+}
+#title{
+  text-align: center;
+  text-decoration: underline;
+  font-family: Indie Flower;
+  font-style: italic;
+  color: black;
+  font-size: 250%;
+  background-color: rgba(255,182,193,0.6);
+}
+#canvas{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+body{
+  background-image: url("https://ih1.redbubble.net/image.267627132.7382/flat,800x800,075,t.u2.jpg");
+}
