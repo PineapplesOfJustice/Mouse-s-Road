@@ -1,5 +1,5 @@
 var namespace = "http://www.w3.org/2000/svg"
-var level = 1;
+var level = 2;
 var attempt = 0;
 var mouseX = true;
 var mouseY = true; 
@@ -56,13 +56,29 @@ function startGame(){
   if(level==1){
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
-    makeText("Got", 105, 100, 70,"Covered By Your Grace","yellow");
-    makeText("Cheese?", 45, 160, 73,"Covered By Your Grace","yellow");      
-    makeCircle(73,135,8,"black");
-    button = makeCircle(73,135,5,"red");
+    makeText("Got", 105, 80, 70,"Covered By Your Grace","yellow");
+    makeText("Cheese?", 45, 140, 73,"Covered By Your Grace","yellow");      
+    makeCircle(73,115,8,"black");
+    button = makeCircle(73,115,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",181, 52.5, 15,15);
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",181, 32.5, 15,15);
     texto.innerHTML = "Got Cheese? How can a mouse crosss empty space? Wouldn't it be nice if there was a bridge...";
+  }
+  if(level==2){
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    boy1 = makePolyline("163 11 95 88 123 88 95 128 123 128 86 188 168 105 141 105 164 68 137 68 162 13","yellow",11);
+    text2 =  makeText("Flash",200,180,50,"Amatic SC","yellow");     
+    boy = makeCircle(132, 100, 64, "none");
+    boy.setAttribute("stroke-width", 9);
+    boy.setAttribute("stroke", "yellow");
+    boy1.setAttribute("stroke-linecap","butt");
+    makeCircle(91,162,8,"black");
+    button = makeCircle(91,162,5,"red");
+    button.addEventListener("click",startLevel);
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",125, 18, 15,15); 
+    texto.innerHTML = "Empty space or is it? Death will show you the way. Solve it in a flash and the you will be surprise by what you see.";
+
   }
 }
 
@@ -70,6 +86,11 @@ function startGame(){
 
 function startLevel(){
   attempt = attempt+1;
+  if(level==2){
+  boy.setAttribute("stroke","#4A708B");
+  boy1.setAttribute("stroke","#4A708B");
+  text2.setAttribute("fill", "#4A708B");
+  }
   if(attempt==1){
     accio.innerHTML = "Attempt: "+attempt;
   }
@@ -79,6 +100,7 @@ function startLevel(){
   mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", mouseX, mouseY, 15, 15);
   mouse.setAttribute("opacity",1);
   button.setAttribute("fill","#FF8C00");
+  button.removeEventListener("click",startLevel);
   canvas.setAttribute("cursor","pointer");
   canvas.addEventListener('mousemove', moveMouse);
   death.addEventListener('mouseover',endGame);
@@ -90,7 +112,12 @@ function endLevel(){
   canvas.setAttribute("cursor","auto");
   canvas.removeEventListener('mousemove', moveMouse);
   death.removeEventListener('mouseover',endGame);
-  screen =  makeRect(0,0,300,200,"black",0.3);
+  screen = makeRect(0,0,300,200,"black",0.3);
+  if(level==3){
+    boy.setAttribute("stroke","yellow");
+    boy1.setAttribute("stroke","yellow");
+    text2.setAttribute("fill","yellow");  
+  }
   text1 =  makeText("Cleared!",82,90,50,"Covered By Your Grace","white");  
   boy1 = makeRect(120, 110, 60, 20, "black");
   boy1.setAttribute("rx",6);
@@ -109,6 +136,7 @@ function endGame(){
   canvas.setAttribute("cursor","auto");
   canvas.removeEventListener('mousemove', moveMouse);
   death.removeEventListener('mouseover',endGame);
+  button.addEventListener("click",startLevel);
   xShape();
 }
 
