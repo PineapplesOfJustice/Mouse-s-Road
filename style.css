@@ -24,3 +24,28 @@
 body{
   background-image: url("https://ih1.redbubble.net/image.267627132.7382/flat,800x800,075,t.u2.jpg");
 }
+#con{
+  position:fixed;
+  bottom:10px;
+  background-image: url("http://wallpapercave.com/wp/aZAy7vW.jpg");
+  padding: 12px;
+}
+input{
+  border-right: solid blue 2px;
+  background: #eef7fa;
+  text-align: center;
+  font-family: Dancing Script;  
+  margin: 5px;
+}
+button{
+  color: #138808;
+  background-color: #ffffcc;
+  font-size: 13px;
+  border: 2px dashed  #00b300;
+  font-weight: bold;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-left: 150px;
+  padding-left: 12px;
+  padding-right: 12px;
+}

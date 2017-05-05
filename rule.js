@@ -1,5 +1,6 @@
 var namespace = "http://www.w3.org/2000/svg"
-var level = 2;
+var level = 7;
+var max = 6;
 var attempt = 0;
 var mouseX = true;
 var mouseY = true; 
@@ -14,7 +15,36 @@ var cheese = true;
 var boy = true;
 var boy1 = true;
 var accio = true;
+var platform1 = true;
+var platform2 = true;
+var platform3 = true;
+var platform4 = true;
+var platform5 = true;
+var x = 1;
+var y = 1;
+var z = 1;
+var a = 1;
+var b = 1;
+var d = 0;
 
+function iChooseYou(){
+  var selector = document.getElementById("valuea").value;
+  if(selector==""){
+    selector=0;
+  }
+  x = 1;
+  y = 1;
+  z = 1;
+  a = 1;
+  b = 1;
+  d = 1;
+  if(level==5){
+    time2();   
+  }
+  level = Number(selector);  
+  startGame();
+  stopAnimationFrame(platform);
+}
 //<initial>
 startGame();
 startScreen();
@@ -42,7 +72,7 @@ function xShape(){
 //important
 
 function startGame(){
-  attempt = 0;
+  attempt = 0;    
   death = makeRect(0,0,300,200,"#4A708B");
   if(level==0){
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
@@ -53,7 +83,7 @@ function startGame(){
     button.addEventListener("click",startLevel);
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",233, 80, 15,15);
   }
-  if(level==1){
+  else if(level==1){
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     makeText("Got", 105, 80, 70,"Covered By Your Grace","yellow");
@@ -64,7 +94,7 @@ function startGame(){
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",181, 32.5, 15,15);
     texto.innerHTML = "Got Cheese? How can a mouse crosss empty space? Wouldn't it be nice if there was a bridge...";
   }
-  if(level==2){
+  else if(level==2){
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     boy1 = makePolyline("163 11 95 88 123 88 95 128 123 128 86 188 168 105 141 105 164 68 137 68 162 13","yellow",11);
@@ -78,19 +108,298 @@ function startGame(){
     button.addEventListener("click",startLevel);
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",125, 18, 15,15); 
     texto.innerHTML = "Empty space or is it? Death will show you the way. Solve it in a flash and the you will be surprise by what you see.";
-
+  }
+  else if(level==3){
+    b=1;  
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    makeRect(11,35,30,30, "yellow");
+    makePolyline("40 50 100 50", "yellow", 15);
+    makeRect(240,160,30,30, "yellow");
+    makePolyline("255.5 162 255.5 110", "yellow", 15);
+    //platforms
+    platform1 = makeRect(98,35,30,30,"yellow");  
+    platform2 = makeRect(98,105,30,30,"yellow");
+    platform3 = makeRect(15,155,30,30,"yellow");
+    platform4 = makeRect(190,132,30,30,"yellow");
+    makeRect(10,170,15,15,"orange");
+    //
+    makeCircle(26,50,8,"black");
+    button = makeCircle(26,50,5,"red");
+    button.addEventListener("click",startLevel);
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",247, 167, 15,15); 
+    texto.innerHTML = "Cross the bridge and good luck. Your journey will be frustrating.";
+    platform();
+  }
+  else if(level==4){
+    b=1;  
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    makePolyline("222 64 58 47 57 154 225 173 228 97 116 93 118 127 174 134","yellow",13);
+    makeCircle(210,63,8,"black");
+    button = makeCircle(210,63,5,"red");
+    button.addEventListener("click",startLevel);
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",153, 121, 16,16);
+    platform5 = makeImage("https://img.clipartfest.com/53d5952f53019583fd8c5bfbc212b9cb_pink-mouse-clip-art-mouse-clipart-no-background_298-294.png", 200,87, 15, 15);
+    texto.innerHTML = "Race. Race. Race! Beat Maggie with your maneuver speed! Just don't expect her to play fair!"; 
+    stopAnimationFrame(platform);
+  }
+  else if(level==5){
+    b=0.4;
+    d=0;
+    platform1 = 3000;
+    makePolyline("229 60 233 159 51 162 75 96 218 82","yellow",13)
+    makePolyline("193 49 75 86","yellow",13)
+    makePolyline("232 54 195 46","yellow",13)
+    makeCircle(229,71.5,8,"black");
+    makeCircle(229,71.5,5,"red");
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",196, 74, 16,16);
+    texto.innerHTML = "Who turned off the light? It will be a dark and stormy night.";
+    death = makeRect(0,0,300,200,"black");  
+    x = makePolyline("229 60 233 159 51 162 75 96 218 82","black",13)
+    y = makePolyline("193 49 75 86","black",13)
+    z = makePolyline("232 54 195 46","black",13)
+    a = makeCircle(229,71.5,8,"black");
+    button = makeCircle(229,71.5,5,"red");
+    button.addEventListener("click",startLevel);
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",196, 74, 16,16,0);  
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    time();  
+  } 
+  else if(level==6){
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    makeCircle(120,110,8,"black");
+    button = makeCircle(120,110,5,"red");
+    button.addEventListener("click",startLevel);
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",160, 80, 16,16);  
+    texto.innerHTML = "Hey, there is no pathway! Well, build one!";
+  }
+  else{
+    a=1;
+    b=1;  
+    c=1;  
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    makeText("The", 120, 60, 50,"Covered By Your Grace","yellow");
+    makeText("Lost Levels", 35, 115, 55,"Covered By Your Grace","yellow");
+    //
+    platform1 = makeRect(137,117,26,26,"yellow");     
+    platform1.addEventListener("mouseenter",function(){
+      c=1;
+      b=0;
+    });
+    platform1.addEventListener("mouseleave",b=1); 
+    platform2 =  makeRect(140,170,20,20,"orange"); 
+    platform2.addEventListener("click",appear);  
+    //
+    makeCircle(130,75,8,"black");
+    button = makeCircle(130,75,5,"red");
+    button.addEventListener("click",startLevel);
+    texto.innerHTML = "Lo siento, pero no puedo encontrar el nivel que buscas.";
+    lostPlatforms();
   }
 }
 
 //important
+function appear(){
+  cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",142, 173, 15,15);
+}
+function lostPlatforms(){
+  var p1X = getX(platform1);
+  var p1Y = getY(platform1);    
+  if(p1Y<155 && a==1){
+    move(platform1,0,0.3)
+  }
+  else if(p1Y>=155 && a==1){
+    a=2;  
+    move(platform1,0,-0.3)
+  }
+  else if(p1Y>120 && a==2){  
+    move(platform1,0,-0.3)
+  }
+  else if(p1Y<=120 && a==2){
+    a=1;  
+    move(platform1,0,0.3)
+  }
+  if(b==1){  
+    if(p1X<137){
+      move(platform1,0.5,0);    
+    }
+    else if(p1X>137){
+      move(platform1,-0.5,0);    
+    }
+  }
+  else if(b==0){  
+    if(p1X>120 && c==1){
+      move(platform1,-0.4,0)
+    }
+    else if(p1X<=120 && c==1){
+      c=2;  
+      move(platform1,0.4,0)
+    }   
+    else if(p1X<157 && c==2){
+      move(platform1,0.4,0)
+    }
+    else if(p1Y>=157 && c==2){
+      c=1;  
+      move(platform1,-0.4,0)
+    }
+  }
+  if(b!=2){  
+    requestAnimationFrame(lostPlatforms);
+  }
+}
+
+function time(){
+  setTimeout(function(){
+    death.setAttribute("opacity",b);
+    x.setAttribute("opacity",b);
+    y.setAttribute("opacity",b);
+    z.setAttribute("opacity",b);
+    a.setAttribute("opacity",b);
+    time2();
+  }, platform1);
+}
+function time2(){
+  setTimeout(function(){
+    death.setAttribute("opacity",1);
+    x.setAttribute("opacity",1);
+    y.setAttribute("opacity",1);
+    z.setAttribute("opacity",1);
+    a.setAttribute("opacity",1);
+    b = Math.random()/4;
+    platfrom1 = Math.random()*3000;
+    if(d==0){  
+      time();
+    }
+  }, 500);      
+}
+function mice(){
+  var p5X = getX(platform5);
+  var p5Y = getY(platform5);
+  if(b==1){
+    move(platform5,-0.3,-0.01);
+    b=2;
+  }
+  else if(p5X > 107 && b==2){
+    move(platform5,-0.3,-0.01);
+  }
+    else if(p5X <= 107 && b==2){
+    move(platform5,0.01,0.3);
+    b=3;
+  }
+  else if(p5Y < 117 && b==3){
+    move(platform5,0.008,0.3);
+  }
+  else if(p5Y >= 117 && b==3){
+    move(platform5,0.3,0.05);
+    b=4;
+  }    
+  else if(p5X < 140 && b==4){
+    move(platform5,0.3,0.05);
+  }
+  else if(p5X >= 140 && b==4){
+      b=1;
+      setX(platform5,200);
+      setY(platform5,87);
+      endGame();
+      stopAnimationFarmae(mice);
+  }
+  requestAnimationFrame(mice);
+}
+function platform(){ 
+  p1Y = getY(platform1);
+  p2X = getX(platform2);
+  p3X = getX(platform3);
+  p4X = getX(platform4);
+  p4Y = getY(platform4);
+  if(p1Y < 100 && y==1){    
+    move(platform1,0,0.4);
+  }
+  else if(p1Y >= 100){
+    y=-1;
+    move(platform1,0,-0.4);  
+  }
+  else if(p1Y > 35 && y==-1){    
+    move(platform1,0,-0.4);
+  }
+  else if(p1Y <= 35){
+    y=1;  
+    move(platform1,0,0.4);
+  }
+  if(p2X > 10 && x==1){    
+    move(platform2,-0.4,0.224);
+  }
+  else if(p2X <= 10){
+    x=-1;
+    move(platform2,0.4,-0.224);  
+  }
+  else if(p2X < 98 && x==-1){    
+    move(platform2,0.4,-0.224);
+  }
+  else if(p2X >= 98){
+    x=1;  
+    move(platform2,-0.4,0.224);
+  }
+  if(p3X < 190 && z==1){    
+    move(platform3,0.4,0); 
+  }
+  else if(p3X >= 190){
+    z=-1;
+    move(platform3,-0.4,0);  
+  }
+  else if(p3X > 15 && z==-1){    
+    move(platform3,-0.4,0);
+  }
+  else if(p3X <= 15){
+    z=1;  
+    move(platform3,0.4,0);
+  }
+  if(p4Y > 85 && a==1){ //(190, 132)   
+    move(platform4,0,-0.4); 
+  }
+  else if(p4Y <= 85 && a==1){//(190, 185)
+    a=2;
+    move(platform4,0.4,0);  
+  }
+  else if(p4X <240 && a==2){//(240, 185)    
+    move(platform4,0.4,0);
+  }
+  else if(p4X >= 240 && a==2){
+    a=3;  
+    move(platform4,-0.4,0);
+  }
+  else if(p4X >190 && a==3){  //(190, 132)  
+    move(platform4,-0.4,0);
+  }
+  else if(p4X <= 190 && a==3){
+    a=4;  
+    move(platform4,0,0.4);
+  } 
+  else if(p4Y < 150 && a==4){ //(190, 132)    
+    move(platform4,0,0.4); 
+  }
+  else if(p4Y >= 150 && a==4){
+    a=1;
+    move(platform4,-0.4,0);  
+  }
+  requestAnimationFrame(platform);    
+}
 
 function startLevel(){
-  attempt = attempt+1;
+///
   if(level==2){
   boy.setAttribute("stroke","#4A708B");
   boy1.setAttribute("stroke","#4A708B");
   text2.setAttribute("fill", "#4A708B");
   }
+  if(level==4 && b==1){
+    mice();
+  }
+///    
+  attempt = attempt+1;
   if(attempt==1){
     accio.innerHTML = "Attempt: "+attempt;
   }
@@ -107,17 +416,24 @@ function startLevel(){
 }
 
 function endLevel(){
+///
+  if(level==2){
+    boy.setAttribute("stroke","yellow");
+    boy1.setAttribute("stroke","yellow");
+    text2.setAttribute("fill","yellow");  
+  }
+///
+  d=1;
+  if(level==5){  
+    time2();  
+  }
+  b=2;  
   level = level+1;
   button.setAttribute("fill","green");
   canvas.setAttribute("cursor","auto");
   canvas.removeEventListener('mousemove', moveMouse);
   death.removeEventListener('mouseover',endGame);
   screen = makeRect(0,0,300,200,"black",0.3);
-  if(level==3){
-    boy.setAttribute("stroke","yellow");
-    boy1.setAttribute("stroke","yellow");
-    text2.setAttribute("fill","yellow");  
-  }
   text1 =  makeText("Cleared!",82,90,50,"Covered By Your Grace","white");  
   boy1 = makeRect(120, 110, 60, 20, "black");
   boy1.setAttribute("rx",6);
@@ -137,7 +453,12 @@ function endGame(){
   canvas.removeEventListener('mousemove', moveMouse);
   death.removeEventListener('mouseover',endGame);
   button.addEventListener("click",startLevel);
-  xShape();
+  if(level>=max){
+    b=1;     
+  }
+  if(level<max){  
+    xShape();
+  }
 }
 
 function startScreen(){
