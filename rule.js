@@ -1,6 +1,6 @@
 var namespace = "http://www.w3.org/2000/svg"
 var level = 7;
-var max = 6;
+var max = 8;
 var attempt = 0;
 var mouseX = true;
 var mouseY = true; 
@@ -26,6 +26,7 @@ var z = 1;
 var a = 1;
 var b = 1;
 var d = 0;
+var e = []
 
 function iChooseYou(){
   var selector = document.getElementById("valuea").value;
@@ -40,6 +41,9 @@ function iChooseYou(){
   d = 1;
   if(level==5){
     time2();   
+  }
+  if(level==7){
+    clock();
   }
   level = Number(selector);  
   startGame();
@@ -59,9 +63,34 @@ function moveMouse(){
   mouseY = svgPt.y-15.5;
   mouse.setAttribute("x", mouseX);
   mouse.setAttribute("y", mouseY);
-  if(collides(mouse, cheese)){
-    endLevel();
+  if(level!=7){  
+    if(collides(mouse, cheese)){
+      endLevel();
+    }
   }
+  //
+  if(level==7){  
+    if(collides(mouse, cheese[1])){
+      endGame();
+    }  
+    if(collides(mouse, cheese[2])){
+      endGame();
+    }  
+    if(collides(mouse, cheese[3])){
+      hallucinate();
+      endGame();
+    }  
+    if(collides(mouse, cheese[4])){
+      endGame();
+    }  
+    if(collides(mouse, cheese[5])){
+      endGame();
+    }  
+    if(collides(mouse, cheese[6])){
+      endLevel();
+    }
+  }
+  //  
 }
 
 
@@ -175,6 +204,51 @@ function startGame(){
     button.addEventListener("click",startLevel);
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",160, 80, 16,16);  
     texto.innerHTML = "Hey, there is no pathway! Well, build one!";
+  } 
+  else if(level==7){
+    a=-1;
+    b=1;
+    d=1;  
+    for(i=1;i<7;i++){
+      e[i]=true;  
+    }
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    //platforms
+    platform3 = makePolyline("143 93 143 35","yellow",10);  
+    platform1 = [];
+    platform1[1] = makeRect(133,26,20,20,"yellow");
+    platform1[2] = makeRect(186,58,20,20,"yellow");
+      platform1[2].setAttribute("stroke","green");
+      platform1[2].setAttribute("stroke-width",2);
+    platform1[3] = makeRect(186,121,20,20,"yellow");
+      platform1[3].setAttribute("stroke","purple");
+      platform1[3].setAttribute("stroke-width",2);
+      platform1[3].setAttribute("rx",5);
+    platform1[4] = makeRect(133,144,20,20,"yellow");
+      platform1[4].setAttribute("rx",5);
+    platform1[5] = makeRect(80,58,20,20,"yellow");
+      platform1[5].setAttribute("stroke","red");
+      platform1[5].setAttribute("stroke-width",2);
+    platform1[6] = makeRect(80,121,20,20,"yellow");
+      platform1[6].setAttribute("stroke","blue");
+      platform1[6].setAttribute("stroke-width",2);
+      platform1[6].setAttribute("rx",5);
+    makeCircle(143,93,16,"orange");
+    //
+    makeCircle(143,93,8,"black");
+    button = makeCircle(143,93,5,"red");
+    button.addEventListener("click",startLevel);
+    cheese = []; 
+    cheese[1] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",136, 27, 15,15);
+      cheese
+    cheese[2] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",188, 60, 15,15); 
+    cheese[3] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",188, 123, 15,15); 
+    cheese[4] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",135, 145, 15,15); 
+    cheese[5] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",82, 123, 15,15); 
+    cheese[6] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",82, 60, 15,15); 
+    texto.innerHTML = "The Six Cheese:<br><li>One is drugged, one is safe, and the rest are poisoned.</li><li>Beware the circular square, for they will bring no good.</li><li>Special are the diagonals, but stay away from blue.</li><li>I wonder, how the purple will taste, and the red?</li>";
+    clock();  
   }
   else{
     a=1;
@@ -191,18 +265,70 @@ function startGame(){
       b=0;
     });
     platform1.addEventListener("mouseleave",b=1); 
-    platform2 =  makeRect(140,170,20,20,"orange"); 
+    platform2 = makeRect(140,170,20,20,"orange"); 
     platform2.addEventListener("click",appear);  
     //
     makeCircle(130,75,8,"black");
     button = makeCircle(130,75,5,"red");
     button.addEventListener("click",startLevel);
-    texto.innerHTML = "Lo siento, pero no puedo encontrar el nivel que buscas.";
+    texto.innerHTML = "";
     lostPlatforms();
   }
 }
 
 //important
+function hallucinate(){
+  for(i=1;i<7;i++){
+    var t = Math.random();
+    if(t<.167 && e[1]){
+      platform1[i].setAttribute("rx",0);
+      platform1[i].setAttribute("stroke-width",1);
+      platform1[i].setAttribute("stroke","none");  
+      e[1] = false;
+    }
+    else if(t<.334 && e[2]){
+      platform1[i].setAttribute("rx",0);
+      platform1[i].setAttribute("stroke-width",2);
+      platform1[i].setAttribute("stroke","green");
+      e[2] = false;  
+    }
+    else if(t<.5 && e[3]){
+      platform1[i].setAttribute("rx",5);
+      platform1[i].setAttribute("stroke-width",2);
+      platform1[i].setAttribute("stroke","purple");
+      e[3] = false;  
+    }
+    else if(t<.667 && e[4]){
+      platform1[i].setAttribute("rx",5);
+      platform1[i].setAttribute("stroke-width",1);
+      platform1[i].setAttribute("stroke","none");
+      e[4] = false;  
+    }
+    else if(t<.884 && e[5]){
+      platform1[i].setAttribute("rx",0);
+      platform1[i].setAttribute("stroke-width",2);
+      platform1[i].setAttribute("stroke","red");
+      e[5] = false;  
+    }
+    else if(t<=1 && e[6]){
+      platform1[i].setAttribute("rx",5);
+      platform1[i].setAttribute("stroke-width",2);
+      platform1[i].setAttribute("stroke","blue");
+      e[6] = false;  
+    }
+    else{
+      i=i-1;  
+    }
+  }
+  d=d+1;  
+}
+function clock(){
+  b=b+0.5*d;
+  platform3.setAttribute("transform", "rotate("+b+ " 143 93)");
+  if(a==-1){
+    setTimeout(clock, 50);  
+  }
+}
 function appear(){
   cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",142, 173, 15,15);
 }
