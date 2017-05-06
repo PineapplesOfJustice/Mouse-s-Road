@@ -1,6 +1,6 @@
 var namespace = "http://www.w3.org/2000/svg"
-var level = 7;
-var max = 8;
+var level = 9;
+var max = 10;
 var attempt = 0;
 var mouseX = true;
 var mouseY = true; 
@@ -161,7 +161,8 @@ function startGame(){
     platform();
   }
   else if(level==4){
-    b=1;  
+    b=1; 
+    d=1;  
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     makePolyline("222 64 58 47 57 154 225 173 228 97 116 93 118 127 174 134","yellow",13);
@@ -250,6 +251,44 @@ function startGame(){
     texto.innerHTML = "The Six Cheese:<br><li>One is drugged, one is safe, and the rest are poisoned.</li><li>Beware the circular square, for they will bring no good.</li><li>Special are the diagonals, but stay away from blue.</li><li>I wonder, how the purple will taste, and the red?</li>";
     clock();  
   }
+  else if(level==8){
+      
+      
+      
+    /////////////////////////  
+      
+      
+      
+    death = makePath("M169 4771 l-29 -29 0 -139 c0 -76 -5 -1087 -11 -2247 -8 -1601 -8 -2115 1 -2137 26 -62 -26 -59 1129 -59 l1051 0 0 100 0 100 -575 0 -575 0 0 115 0 115 1592 0 1592 0 33 36 33 37 0 286 c0 157 -3 343 -7 413 l-6 128 -94 0 -93 0 0 -323 0 -323 -28 -27 -28 -27 -1267 0 -1267 0 0 115 0 115 345 0 345 0 0 100 0 100 -560 0 -560 0 0 425 0 425 -100 0 -100 0 0 -480 c0 -326 3 -486 11 -502 6 -13 25 -34 42 -48 31 -25 32 -25 204 -22 l173 4 0 -116 0 -116 -320 0 -320 0 0 135 0 135 -100 0 -100 0 0 -197 c0 -109 4 -203 8 -208 4 -6 22 -23 40 -38 33 -27 35 -27 183 -27 l149 0 0 -115 0 -115 -321 0 -321 0 6 1098 c3 603 9 1557 12 2120 l6 1022 599 0 599 0 0 -95 0 -95 -245 0 -245 0 0 -100 0 -100 605 0 605 0 0 100 0 100 -260 0 -260 0 0 95 0 95 1419 0 1419 0 6 -482 c3 -266 7 -653 9 -860 l3 -378 -93 0 -93 0 0 420 0 420 -100 0 -100 0 0 -505 0 -505 -120 0 -120 0 0 265 0 265 -98 0 -99 0 -6 -557 c-4 -306 -7 -661 -7 -790 l0 -233 -110 0 -110 0 0 330 0 330 -100 0 -100 0 0 -345 0 -345 -850 0 c-467 0 -853 -1 -857 -2 -5 -2 -9 176 -11 395 l-2 397 110 0 110 0 0 -242 c0 -241 0 -243 24 -273 l24 -30 221 -3 221 -3 30 30 c50 50 36 122 -30 156 -21 11 -63 15 -160 15 l-130 0 0 423 c0 316 3 426 12 435 9 9 123 12 450 12 l438 0 -2 -442 -3 -443 -141 -5 c-155 -6 -181 -14 -204 -69 -15 -38 -7 -75 25 -107 24 -24 25 -24 249 -24 l225 0 25 33 26 34 0 581 c0 319 -3 588 -6 597 -17 44 -30 45 -647 45 l-585 0 -31 -35 -31 -36 0 -224 0 -225 -105 0 -105 0 0 365 0 365 860 0 860 0 2 -362 3 -363 98 -3 97 -3 0 432 0 431 -34 34 -34 34 -441 0 -441 0 0 115 0 115 585 0 585 0 0 -120 0 -120 97 0 96 0 -7 335 -7 335 115 0 c63 0 121 -3 130 -6 13 -5 16 -23 16 -95 l0 -89 100 0 100 0 0 148 c0 161 5 143 -61 220 l-19 22 -885 0 -885 0 0 -100 0 -100 590 0 590 0 0 -115 0 -115 -1334 0 -1334 0 -36 -40 -36 -40 0 -245 0 -245 100 0 100 0 2 183 3 182 598 3 597 2 0 -115 0 -115 -458 0 -458 0 -27 -28 -27 -28 0 -302 0 -302 -115 0 -115 0 0 108 0 109 -142 6 c-79 4 -174 7 -212 7 l-69 0 6 650 6 650 -29 15 c-46 24 -101 19 -143 -12 l-36 -28 -1 -1517 0 -1518 84 0 c46 0 91 3 100 6 14 6 16 84 16 780 l0 774 112 0 111 0 -6 -275 -5 -275 104 0 104 0 0 160 0 160 110 0 110 0 0 -595 0 -595 29 -32 29 -33 1000 -3 c882 -2 1002 0 1015 13 12 12 42 15 141 15 l126 0 0 -93 c0 -89 -1 -94 -28 -120 l-28 -27 -547 0 -547 0 0 -101 0 -102 645 5 c644 5 646 5 661 26 8 11 21 28 29 36 13 13 15 111 15 720 l0 706 125 0 125 0 0 -360 0 -360 100 0 100 0 0 445 0 445 93 0 94 0 7 -927 c5 -511 11 -1020 15 -1133 3 -113 5 -217 3 -232 l-3 -28 -1005 0 -1004 0 0 -100 0 -100 1078 0 1077 0 28 40 28 39 -21 2258 -20 2258 -26 23 -25 22 -2265 0 -2266 0 -29 -29z","yellow");  
+      death.setAttribute("transform", "translate(73,178) scale(0.03,-0.03)");
+      
+      
+      
+    /////////////////////////  
+      
+      
+      
+    makeCircle(229,71.5,8,"black");
+    button = makeCircle(229,71.5,5,"red");
+    button.addEventListener("click",startLevel);
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",139, 95, 16,16);  
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    texto.innerHTML = "A narrow path for a narrow mouse. Don't worry, the floor is safe. I can't guarentee that for the walls though!";
+  }
+  else if(level==9){
+    b=1;
+    d=1;  
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    makePolyline("90 50      120 160     150 100     180 160    210 50    ","yellow",13);
+    makeCircle(92,59,8,"black");
+    button = makeCircle(92,59,5,"red");
+    button.addEventListener("click",startLevel);
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",199, 50, 16,16);
+    platform5 = makeImage("https://img.clipartfest.com/53d5952f53019583fd8c5bfbc212b9cb_pink-mouse-clip-art-mouse-clipart-no-background_298-294.png", 88,68, 15, 15);
+    texto.innerHTML = "Rematch! Can you best Maggie once again?";
+  }
   else{
     a=1;
     b=1;  
@@ -277,6 +316,48 @@ function startGame(){
 }
 
 //important
+function miceReturn(){
+  var p5X = getX(platform5);
+  var p5Y = getY(platform5);
+  if(b==1){
+    move(platform5,0.64,2.4);
+    b=2;
+  }
+  else if(p5Y < 151 && b==2){
+    move(platform5,0.64,2.4);
+  }
+  else if(p5Y >= 151 && b==2){
+    move(platform5,1.2,-2.4);
+    b=3;
+  }
+  else if(p5X < 140 && b==3){
+    move(platform5,1.2,-2.4);
+  }
+  else if(p5X >= 140 && b==3){
+    move(platform5,1.2,2.4);
+    b=4;
+  }   
+  else if(p5Y < 152 && b==4){
+    move(platform5,1.2,2.4);
+  }
+  else if(p5Y >= 152 && b==4){
+    move(platform5,0.8,-3);
+    b=5;
+  }    
+  else if(p5Y > 60 && b==5){
+    move(platform5,0.8,-3);
+  }
+  else if(p5Y <= 60 && b==5){
+      b=1;
+      setX(platform5,88);
+      setY(platform5,68);
+      endGame();
+      d=0;
+  }
+  if(d==1){  
+    requestAnimationFrame(miceReturn);
+  }    
+}
 function hallucinate(){
   for(i=1;i<7;i++){
     var t = Math.random();
@@ -431,9 +512,11 @@ function mice(){
       setX(platform5,200);
       setY(platform5,87);
       endGame();
-      stopAnimationFarmae(mice);
+      d=0;
   }
-  requestAnimationFrame(mice);
+  if(d==1){  
+    requestAnimationFrame(mice);
+  }
 }
 function platform(){ 
   p1Y = getY(platform1);
@@ -522,7 +605,12 @@ function startLevel(){
   text2.setAttribute("fill", "#4A708B");
   }
   if(level==4 && b==1){
+    d=1;
     mice();
+  }
+  if(level==9 && b==1){
+    d=1;  
+    miceReturn();  
   }
 ///    
   attempt = attempt+1;
@@ -755,6 +843,17 @@ function makeImage(url, x, y, width, height, opacity) {
   var canvas = document.getElementById("canvas")
   canvas.appendChild(image)
   return image
+}
+
+function makePath(points, fill, opacity) {
+  var path = document.createElementNS(namespace, "path")
+  path.setAttribute("d", points)
+  path.setAttribute("opacity", opacity)
+  path.setAttribute("fill", fill)
+  
+  var canvas = document.getElementById("canvas")
+  canvas.appendChild(path)
+  return path
 }
 
 function collides(rect1, rect2) {
