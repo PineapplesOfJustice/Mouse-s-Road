@@ -1,6 +1,6 @@
 var namespace = "http://www.w3.org/2000/svg"
-var level = 9;
-var max = 10;
+var level = 10;
+var max = 11;
 var attempt = 0;
 var mouseX = true;
 var mouseY = true; 
@@ -27,7 +27,7 @@ var a = 1;
 var b = 1;
 var d = 0;
 var e = []
-
+var keys = [];
 function iChooseYou(){
   var selector = document.getElementById("valuea").value;
   if(selector==""){
@@ -54,7 +54,7 @@ startGame();
 startScreen();
 //</initial>
 
-function moveMouse(){
+function moveMouse(){   
   var pt = canvas.createSVGPoint()
   pt.x = event.clientX
   pt.y = event.clientY
@@ -279,6 +279,7 @@ function startGame(){
   else if(level==9){
     b=1;
     d=1;  
+    c=1;  
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     makePolyline("90 50      120 160     150 100     180 160    210 50    ","yellow",13);
@@ -288,6 +289,25 @@ function startGame(){
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",199, 50, 16,16);
     platform5 = makeImage("https://img.clipartfest.com/53d5952f53019583fd8c5bfbc212b9cb_pink-mouse-clip-art-mouse-clipart-no-background_298-294.png", 88,68, 15, 15);
     texto.innerHTML = "Rematch! Can you best Maggie once again?";
+  }
+  else if(level==10){
+    b=0;
+    a=1;
+    c=1;  
+    platform5 = makeRect(80,100,21,21,"orange");  
+    document.addEventListener('keyup',function(event){keys[event.keyCode]=false});  
+    document.addEventListener("keydown",function(event){keys[event.keyCode]=true;}); 
+    track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
+    accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
+    makePolyline("50 50 83 94", "yellow",15)
+    makePolyline("228 100 250 80", "yellow",15)  
+    makeCircle(58,60,8,"black");
+    button = makeCircle(58,60,5,"red");
+    button.addEventListener("click",startLevel);                    
+    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",233, 80, 15,15);
+    mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", 59,66, 15, 15);
+    texto.innerHTML = "Finale! Control the platform with WASD, I will be moving the mouse this time around!";
+    loopHole();  
   }
   else{
     a=1;
@@ -310,12 +330,87 @@ function startGame(){
     makeCircle(130,75,8,"black");
     button = makeCircle(130,75,5,"red");
     button.addEventListener("click",startLevel);
-    texto.innerHTML = "";
+    texto.innerHTML = "Error, Level Not Found. Congrat on beating the game though!";
     lostPlatforms();
   }
 }
-
 //important
+function mouseTion(){
+  mouseX = getX(mouse);
+  mouseY = getY(mouse);  
+  if(mouseY<81 && a==1){
+    move(mouse,1.5,2);    
+  }  
+  else if(mouseY>=81 && a==1){
+    move(mouse,1,-0.33);    
+    a=2;  
+  }  
+  else if(mouseX<125 && a==2){
+    move(mouse,1,-0.33);    
+  }  
+  else if(mouseX>=125 && a==2){
+    move(mouse,-0.66,1);
+    a=3;  
+  } 
+  else if(mouseY<142 && a==3){
+    move(mouse,-0.66,1);    
+  }  
+  else if(mouseY>=142 && a==3){
+    move(mouse,1,0.50);
+    a=4;  
+  } 
+  else if(mouseX<127 && a==4){
+    move(mouse,1,0.50);    
+  }  
+  else if(mouseX>=127 && a==4){
+    move(mouse,1.2,-1);
+    a=5;  
+  }
+  else if(mouseY>100 && a==5){
+    move(mouse,1.2,-1);    
+  }  
+  else if(mouseY<=100 && a==5){
+    move(mouse,-1.2,1);
+    a=6;  
+  }
+  else if(mouseY<130 && a==6){
+    move(mouse,-1.2,1);    
+  }  
+  else if(mouseY>=130 && a==6){
+    move(mouse,1.2,-1);
+    a=7;  
+  }
+  else if(mouseY>85 && a==7){
+    move(mouse,1.2,-1);    
+  }  
+  else if(mouseY<=85 && a==7){
+    endLevel();
+  }
+  if(b==0){
+    requestAnimationFrame(mouseTion);  
+  }
+}
+
+function loopHole(){
+  var x = getX(platform5);
+  var y = getY(platform5);  
+  if(keys[87] && y>3){
+    move(platform5,0,-1);
+  }
+  else if(keys[83] && y<176){
+    move(platform5,0,1);  
+  }
+  if(keys[65] && x>3){
+    move(platform5,-1,0);
+  }
+  else if(keys[68] && x<276){
+    move(platform5,1,0);  
+  }
+  if(b==0){
+    setTimeout(loopHole,15)  
+  }
+}
+
 function miceReturn(){
   var p5X = getX(platform5);
   var p5Y = getY(platform5);
@@ -612,6 +707,10 @@ function startLevel(){
     d=1;  
     miceReturn();  
   }
+  if(level==10){
+    a=1;
+    mouseTion();  
+  }
 ///    
   attempt = attempt+1;
   if(attempt==1){
@@ -620,13 +719,15 @@ function startLevel(){
   else{
     accio.innerHTML = "Attempts: "+attempt;
   }
-  mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", mouseX, mouseY, 15, 15);
-  mouse.setAttribute("opacity",1);
+  if(level!=10){  
+    mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", mouseX, mouseY, 15, 15);
+    mouse.setAttribute("opacity",1);
+    death.addEventListener('mouseover',endGame);
+    canvas.addEventListener('mousemove', moveMouse);
+  }
   button.setAttribute("fill","#FF8C00");
   button.removeEventListener("click",startLevel);
   canvas.setAttribute("cursor","pointer");
-  canvas.addEventListener('mousemove', moveMouse);
-  death.addEventListener('mouseover',endGame);
 }
 
 function endLevel(){
@@ -636,6 +737,7 @@ function endLevel(){
     boy1.setAttribute("stroke","yellow");
     text2.setAttribute("fill","yellow");  
   }
+    
 ///
   d=1;
   if(level==5){  
@@ -672,6 +774,9 @@ function endGame(){
   }
   if(level<max){  
     xShape();
+  }
+  else if(level==10){
+    mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", 59,66, 15, 15); 
   }
 }
 
