@@ -292,15 +292,14 @@ function startGame(){
   }
   else if(level==10){
     b=0;
-    a=1;
-    c=1;  
-    platform5 = makeRect(80,100,21,21,"orange");  
+    a=1;  
+    e[1] = platform5 = makeRect(80,100,30,30,"orange");  
     document.addEventListener('keyup',function(event){keys[event.keyCode]=false});  
     document.addEventListener("keydown",function(event){keys[event.keyCode]=true;}); 
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
-    makePolyline("50 50 83 94", "yellow",15)
-    makePolyline("228 100 250 80", "yellow",15)  
+    e[2] = makeRect(45,45,36,48,"yellow");
+    e[3] = makeRect(226,73,30,30,"yellow");  
     makeCircle(58,60,8,"black");
     button = makeCircle(58,60,5,"red");
     button.addEventListener("click",startLevel);                    
@@ -337,54 +336,63 @@ function startGame(){
 //important
 function mouseTion(){
   mouseX = getX(mouse);
-  mouseY = getY(mouse);  
+  mouseY = getY(mouse);
+  c=2;  
   if(mouseY<81 && a==1){
-    move(mouse,1.5,2);    
+    move(mouse,0.375,0.5);    
   }  
   else if(mouseY>=81 && a==1){
-    move(mouse,1,-0.33);    
+    move(mouse,0.5,-0.167);    
     a=2;  
   }  
   else if(mouseX<125 && a==2){
-    move(mouse,1,-0.33);    
+    move(mouse,0.5,-0.167);    
   }  
   else if(mouseX>=125 && a==2){
-    move(mouse,-0.66,1);
+    move(mouse,-0.33,0.5);
     a=3;  
   } 
   else if(mouseY<142 && a==3){
-    move(mouse,-0.66,1);    
+    move(mouse,-0.33,0.5);    
   }  
   else if(mouseY>=142 && a==3){
-    move(mouse,1,0.50);
+    move(mouse,0.5,0.25);
     a=4;  
   } 
   else if(mouseX<127 && a==4){
-    move(mouse,1,0.50);    
+    move(mouse,0.5,0.25);    
   }  
   else if(mouseX>=127 && a==4){
-    move(mouse,1.2,-1);
+    move(mouse,0.6,-0.5);
     a=5;  
   }
   else if(mouseY>100 && a==5){
-    move(mouse,1.2,-1);    
+    move(mouse,0.6,-0.5);    
   }  
   else if(mouseY<=100 && a==5){
-    move(mouse,-1.2,1);
+    move(mouse,-0.6,0.5);
     a=6;  
   }
   else if(mouseY<130 && a==6){
-    move(mouse,-1.2,1);    
+    move(mouse,-0.6,0.5);    
   }  
   else if(mouseY>=130 && a==6){
-    move(mouse,1.2,-1);
+    move(mouse,0.6,-0.5);
     a=7;  
   }
   else if(mouseY>85 && a==7){
-    move(mouse,1.2,-1);    
+    move(mouse,0.6,-0.5);    
   }  
   else if(mouseY<=85 && a==7){
     endLevel();
+  }
+  for(i=1;i<4;i++){
+    if(collides(mouse,e[i])){
+      c=1;  
+    }
+  }
+  if(c==2){
+    endGame();  
   }
   if(b==0){
     requestAnimationFrame(mouseTion);  
@@ -395,18 +403,18 @@ function loopHole(){
   var x = getX(platform5);
   var y = getY(platform5);  
   if(keys[87] && y>3){
-    move(platform5,0,-1);
+    move(platform5,0,-0.8);
   }
   else if(keys[83] && y<176){
-    move(platform5,0,1);  
+    move(platform5,0,0.8);  
   }
   if(keys[65] && x>3){
-    move(platform5,-1,0);
+    move(platform5,-0.8,0);
   }
   else if(keys[68] && x<276){
-    move(platform5,1,0);  
+    move(platform5,0.8,0);  
   }
-  if(b==0){
+  if(b!=2){
     setTimeout(loopHole,15)  
   }
 }
@@ -709,6 +717,7 @@ function startLevel(){
   }
   if(level==10){
     a=1;
+    b=0;  
     mouseTion();  
   }
 ///    
@@ -769,13 +778,13 @@ function endGame(){
   canvas.removeEventListener('mousemove', moveMouse);
   death.removeEventListener('mouseover',endGame);
   button.addEventListener("click",startLevel);
-  if(level>=max){
+  if(level>=max-1){
     b=1;     
   }
   if(level<max){  
     xShape();
   }
-  else if(level==10){
+  if(level==10){
     mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", 59,66, 15, 15); 
   }
 }
