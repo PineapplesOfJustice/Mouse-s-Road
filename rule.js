@@ -773,11 +773,11 @@ function startLevel(){
   else{
     accio.innerHTML = "Attempts: "+attempt;
   }
+  mouse.setAttribute("opacity",1);
+  death.addEventListener('mouseover',endGame);
+  canvas.addEventListener('mousemove', moveMouse);
   if(level!=10){  
     mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", mouseX, mouseY, 15, 15);
-    mouse.setAttribute("opacity",1);
-    death.addEventListener('mouseover',endGame);
-    canvas.addEventListener('mousemove', moveMouse);
   }
   button.setAttribute("fill","#FF8C00");
   button.removeEventListener("click",startLevel);
