@@ -1,5 +1,5 @@
 var namespace = "http://www.w3.org/2000/svg"
-var level = 10;
+var level = 0;
 var max = 11;
 var attempt = 0;
 var mouseX = true;
@@ -28,6 +28,8 @@ var b = 1;
 var d = 0;
 var e = []
 var keys = [];
+
+////////////////////////////////////////////Level Selector////////////////////////////////////////////////
 function iChooseYou(){
   var selector = document.getElementById("valuea").value;
   if(selector==""){
@@ -49,11 +51,12 @@ function iChooseYou(){
   startGame();
   stopAnimationFrame(platform);
 }
-//<initial>
+
+////////////////////////////////////////////Initial////////////////////////////////////////////////
 startGame();
 startScreen();
-//</initial>
 
+////////////////////////////////////////////Mouse Movement////////////////////////////////////////////////
 function moveMouse(){   
   var pt = canvas.createSVGPoint()
   pt.x = event.clientX
@@ -68,7 +71,7 @@ function moveMouse(){
       endLevel();
     }
   }
-  //
+  //For clock level
   if(level==7){  
     if(collides(mouse, cheese[1])){
       endGame();
@@ -90,19 +93,19 @@ function moveMouse(){
       endLevel();
     }
   }
-  //  
 }
 
-
+////////////////////////////////////////////Death Location////////////////////////////////////////////////
 function xShape(){
   makeImage("https://img.clipartfest.com/14d203b6aca7377ec9c33486d52b1066_x-no-background-clipart-1-x-out-clipart-no-background_600-532.png",mouseX+6,mouseY+14,6,6)
 }
 
-//important
-
+////////////////////////////////////////////Level Content////////////////////////////////////////////////
 function startGame(){
   attempt = 0;    
   death = makeRect(0,0,300,200,"#4A708B");
+    
+  //Tutorial//
   if(level==0){
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
@@ -112,6 +115,8 @@ function startGame(){
     button.addEventListener("click",startLevel);
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",233, 80, 15,15);
   }
+    
+  //Level 1//
   else if(level==1){
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
@@ -123,6 +128,8 @@ function startGame(){
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",181, 32.5, 15,15);
     texto.innerHTML = "Got Cheese? How can a mouse crosss empty space? Wouldn't it be nice if there was a bridge...";
   }
+    
+  //Level 2//
   else if(level==2){
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
@@ -138,6 +145,8 @@ function startGame(){
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",125, 18, 15,15); 
     texto.innerHTML = "Empty space or is it? Death will show you the way. Solve it in a flash and the you will be surprise by what you see.";
   }
+    
+  //Level 3//
   else if(level==3){
     b=1;  
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
@@ -160,6 +169,8 @@ function startGame(){
     texto.innerHTML = "Cross the bridge and good luck. Your journey will be frustrating.";
     platform();
   }
+    
+  //Level 4//
   else if(level==4){
     b=1; 
     d=1;  
@@ -172,8 +183,10 @@ function startGame(){
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",153, 121, 16,16);
     platform5 = makeImage("https://img.clipartfest.com/53d5952f53019583fd8c5bfbc212b9cb_pink-mouse-clip-art-mouse-clipart-no-background_298-294.png", 200,87, 15, 15);
     texto.innerHTML = "Race. Race. Race! Beat Maggie with your maneuver speed! Just don't expect her to play fair!"; 
-    stopAnimationFrame(platform);
+    stopAnimationFrame(platform);//Actually doesn't work! HoHoHo.
   }
+    
+  //Level 5//
   else if(level==5){
     b=0.4;
     d=0;
@@ -197,6 +210,8 @@ function startGame(){
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     time();  
   } 
+    
+  //Level 6//
   else if(level==6){
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
@@ -206,6 +221,8 @@ function startGame(){
     cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",160, 80, 16,16);  
     texto.innerHTML = "Hey, there is no pathway! Well, build one!";
   } 
+    
+  //Level 7//
   else if(level==7){
     a=-1;
     b=1;
@@ -251,8 +268,10 @@ function startGame(){
     texto.innerHTML = "The Six Cheese:<br><li>One is drugged, one is safe, and the rest are poisoned.</li><li>Beware the circular square, for they will bring no good.</li><li>Special are the diagonals, but stay away from blue.</li><li>I wonder, how the purple will taste, and the red?</li>";
     clock();  
   }
+    
+  //Level 8//
   else if(level==8){
-      
+    a=1;  
       
       
     /////////////////////////  
@@ -276,10 +295,13 @@ function startGame(){
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     texto.innerHTML = "A narrow path for a narrow mouse. Don't worry, the floor is safe. I can't guarentee that for the walls though!";
   }
+    
+  //Level 9//
   else if(level==9){
     b=1;
     d=1;  
-    c=1;  
+    c=1;
+    a=1;  
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     makePolyline("90 50      120 160     150 100     180 160    210 50    ","yellow",13);
@@ -290,6 +312,8 @@ function startGame(){
     platform5 = makeImage("https://img.clipartfest.com/53d5952f53019583fd8c5bfbc212b9cb_pink-mouse-clip-art-mouse-clipart-no-background_298-294.png", 88,68, 15, 15);
     texto.innerHTML = "Rematch! Can you best Maggie once again?";
   }
+    
+  //Level 10//
   else if(level==10){
     b=0;
     a=1;  
@@ -308,6 +332,8 @@ function startGame(){
     texto.innerHTML = "Finale! Control the platform with WASD, I will be moving the mouse this time around!";
     loopHole();  
   }
+    
+  //Level 11 and after//
   else{
     a=1;
     b=1;  
@@ -333,7 +359,254 @@ function startGame(){
     lostPlatforms();
   }
 }
-//important
+//End of Level Content
+
+////////////Special Function///////////////
+
+//Level 3//
+function platform(){ 
+  p1Y = getY(platform1);
+  p2X = getX(platform2);
+  p3X = getX(platform3);
+  p4X = getX(platform4);
+  p4Y = getY(platform4);
+  if(p1Y < 100 && y==1){    
+    move(platform1,0,0.4);
+  }
+  else if(p1Y >= 100){
+    y=-1;
+    move(platform1,0,-0.4);  
+  }
+  else if(p1Y > 35 && y==-1){    
+    move(platform1,0,-0.4);
+  }
+  else if(p1Y <= 35){
+    y=1;  
+    move(platform1,0,0.4);
+  }
+  if(p2X > 10 && x==1){    
+    move(platform2,-0.4,0.224);
+  }
+  else if(p2X <= 10){
+    x=-1;
+    move(platform2,0.4,-0.224);  
+  }
+  else if(p2X < 98 && x==-1){    
+    move(platform2,0.4,-0.224);
+  }
+  else if(p2X >= 98){
+    x=1;  
+    move(platform2,-0.4,0.224);
+  }
+  if(p3X < 190 && z==1){    
+    move(platform3,0.4,0); 
+  }
+  else if(p3X >= 190){
+    z=-1;
+    move(platform3,-0.4,0);  
+  }
+  else if(p3X > 15 && z==-1){    
+    move(platform3,-0.4,0);
+  }
+  else if(p3X <= 15){
+    z=1;  
+    move(platform3,0.4,0);
+  }
+  if(p4Y > 85 && a==1){ //(190, 132)   
+    move(platform4,0,-0.4); 
+  }
+  else if(p4Y <= 85 && a==1){//(190, 185)
+    a=2;
+    move(platform4,0.4,0);  
+  }
+  else if(p4X <240 && a==2){//(240, 185)    
+    move(platform4,0.4,0);
+  }
+  else if(p4X >= 240 && a==2){
+    a=3;  
+    move(platform4,-0.4,0);
+  }
+  else if(p4X >190 && a==3){  //(190, 132)  
+    move(platform4,-0.4,0);
+  }
+  else if(p4X <= 190 && a==3){
+    a=4;  
+    move(platform4,0,0.4);
+  } 
+  else if(p4Y < 150 && a==4){ //(190, 132)    
+    move(platform4,0,0.4); 
+  }
+  else if(p4Y >= 150 && a==4){
+    a=1;
+    move(platform4,-0.4,0);  
+  }
+  requestAnimationFrame(platform);    
+}
+
+//Level 4//
+function mice(){
+  var p5X = getX(platform5);
+  var p5Y = getY(platform5);
+  if(b==1){
+    move(platform5,-0.3,-0.01);
+    b=2;
+  }
+  else if(p5X > 107 && b==2){
+    move(platform5,-0.3,-0.01);
+  }
+    else if(p5X <= 107 && b==2){
+    move(platform5,0.01,0.3);
+    b=3;
+  }
+  else if(p5Y < 117 && b==3){
+    move(platform5,0.008,0.3);
+  }
+  else if(p5Y >= 117 && b==3){
+    move(platform5,0.3,0.05);
+    b=4;
+  }    
+  else if(p5X < 140 && b==4){
+    move(platform5,0.3,0.05);
+  }
+  else if(p5X >= 140 && b==4){
+      b=1;
+      setX(platform5,200);
+      setY(platform5,87);
+      endGame();
+      d=0;
+  }
+  if(d==1){  
+    requestAnimationFrame(mice);
+  }
+}
+
+//Level 5//
+function time(){
+  setTimeout(function(){
+    death.setAttribute("opacity",b);
+    x.setAttribute("opacity",b);
+    y.setAttribute("opacity",b);
+    z.setAttribute("opacity",b);
+    a.setAttribute("opacity",b);
+    time2();
+  }, platform1);
+}
+
+function time2(){
+  setTimeout(function(){
+    death.setAttribute("opacity",1);
+    x.setAttribute("opacity",1);
+    y.setAttribute("opacity",1);
+    z.setAttribute("opacity",1);
+    a.setAttribute("opacity",1);
+    b = Math.random()/4;
+    platfrom1 = Math.random()*3000;
+    if(d==0){  
+      time();
+    }
+  }, 500);      
+}
+
+//Level 7//
+function hallucinate(){
+  for(i=1;i<7;i++){
+    var t = Math.random();
+    if(t<.167 && e[1]){
+      platform1[i].setAttribute("rx",0);
+      platform1[i].setAttribute("stroke-width",1);
+      platform1[i].setAttribute("stroke","none");  
+      e[1] = false;
+    }
+    else if(t<.334 && e[2]){
+      platform1[i].setAttribute("rx",0);
+      platform1[i].setAttribute("stroke-width",2);
+      platform1[i].setAttribute("stroke","green");
+      e[2] = false;  
+    }
+    else if(t<.5 && e[3]){
+      platform1[i].setAttribute("rx",5);
+      platform1[i].setAttribute("stroke-width",2);
+      platform1[i].setAttribute("stroke","purple");
+      e[3] = false;  
+    }
+    else if(t<.667 && e[4]){
+      platform1[i].setAttribute("rx",5);
+      platform1[i].setAttribute("stroke-width",1);
+      platform1[i].setAttribute("stroke","none");
+      e[4] = false;  
+    }
+    else if(t<.884 && e[5]){
+      platform1[i].setAttribute("rx",0);
+      platform1[i].setAttribute("stroke-width",2);
+      platform1[i].setAttribute("stroke","red");
+      e[5] = false;  
+    }
+    else if(t<=1 && e[6]){
+      platform1[i].setAttribute("rx",5);
+      platform1[i].setAttribute("stroke-width",2);
+      platform1[i].setAttribute("stroke","blue");
+      e[6] = false;  
+    }
+    else{
+      i=i-1;  
+    }
+  }
+  d=d+1;  
+}
+
+function clock(){
+  b=b+0.5*d;
+  platform3.setAttribute("transform", "rotate("+b+ " 143 93)");
+  if(a==-1){
+    setTimeout(clock, 50);  
+  }
+}
+
+//Level 9//
+function miceReturn(){
+  var p5X = getX(platform5);
+  var p5Y = getY(platform5);
+  if(b==1){
+    move(platform5,0.64,2.4);
+    b=2;
+  }
+  else if(p5Y < 151 && b==2){
+    move(platform5,0.64,2.4);
+  }
+  else if(p5Y >= 151 && b==2){
+    move(platform5,1.2,-2.4);
+    b=3;
+  }
+  else if(p5X < 140 && b==3){
+    move(platform5,1.2,-2.4);
+  }
+  else if(p5X >= 140 && b==3){
+    move(platform5,1.2,2.4);
+    b=4;
+  }   
+  else if(p5Y < 152 && b==4){
+    move(platform5,1.2,2.4);
+  }
+  else if(p5Y >= 152 && b==4){
+    move(platform5,0.8,-3);
+    b=5;
+  }    
+  else if(p5Y > 60 && b==5){
+    move(platform5,0.8,-3);
+  }
+  else if(p5Y <= 60 && b==5){
+      b=1;
+      setX(platform5,88);
+      setY(platform5,68);
+      endGame();
+      d=0;
+  }
+  if(d==1){  
+    requestAnimationFrame(miceReturn);
+  }    
+}
+
+//Level 10//
 function mouseTion(){
   mouseX = getX(mouse);
   mouseY = getY(mouse);
@@ -419,103 +692,11 @@ function loopHole(){
   }
 }
 
-function miceReturn(){
-  var p5X = getX(platform5);
-  var p5Y = getY(platform5);
-  if(b==1){
-    move(platform5,0.64,2.4);
-    b=2;
-  }
-  else if(p5Y < 151 && b==2){
-    move(platform5,0.64,2.4);
-  }
-  else if(p5Y >= 151 && b==2){
-    move(platform5,1.2,-2.4);
-    b=3;
-  }
-  else if(p5X < 140 && b==3){
-    move(platform5,1.2,-2.4);
-  }
-  else if(p5X >= 140 && b==3){
-    move(platform5,1.2,2.4);
-    b=4;
-  }   
-  else if(p5Y < 152 && b==4){
-    move(platform5,1.2,2.4);
-  }
-  else if(p5Y >= 152 && b==4){
-    move(platform5,0.8,-3);
-    b=5;
-  }    
-  else if(p5Y > 60 && b==5){
-    move(platform5,0.8,-3);
-  }
-  else if(p5Y <= 60 && b==5){
-      b=1;
-      setX(platform5,88);
-      setY(platform5,68);
-      endGame();
-      d=0;
-  }
-  if(d==1){  
-    requestAnimationFrame(miceReturn);
-  }    
-}
-function hallucinate(){
-  for(i=1;i<7;i++){
-    var t = Math.random();
-    if(t<.167 && e[1]){
-      platform1[i].setAttribute("rx",0);
-      platform1[i].setAttribute("stroke-width",1);
-      platform1[i].setAttribute("stroke","none");  
-      e[1] = false;
-    }
-    else if(t<.334 && e[2]){
-      platform1[i].setAttribute("rx",0);
-      platform1[i].setAttribute("stroke-width",2);
-      platform1[i].setAttribute("stroke","green");
-      e[2] = false;  
-    }
-    else if(t<.5 && e[3]){
-      platform1[i].setAttribute("rx",5);
-      platform1[i].setAttribute("stroke-width",2);
-      platform1[i].setAttribute("stroke","purple");
-      e[3] = false;  
-    }
-    else if(t<.667 && e[4]){
-      platform1[i].setAttribute("rx",5);
-      platform1[i].setAttribute("stroke-width",1);
-      platform1[i].setAttribute("stroke","none");
-      e[4] = false;  
-    }
-    else if(t<.884 && e[5]){
-      platform1[i].setAttribute("rx",0);
-      platform1[i].setAttribute("stroke-width",2);
-      platform1[i].setAttribute("stroke","red");
-      e[5] = false;  
-    }
-    else if(t<=1 && e[6]){
-      platform1[i].setAttribute("rx",5);
-      platform1[i].setAttribute("stroke-width",2);
-      platform1[i].setAttribute("stroke","blue");
-      e[6] = false;  
-    }
-    else{
-      i=i-1;  
-    }
-  }
-  d=d+1;  
-}
-function clock(){
-  b=b+0.5*d;
-  platform3.setAttribute("transform", "rotate("+b+ " 143 93)");
-  if(a==-1){
-    setTimeout(clock, 50);  
-  }
-}
+//Level 11 and After//
 function appear(){
   cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",142, 173, 15,15);
 }
+
 function lostPlatforms(){
   var p1X = getX(platform1);
   var p1Y = getY(platform1);    
@@ -561,147 +742,11 @@ function lostPlatforms(){
     requestAnimationFrame(lostPlatforms);
   }
 }
+//End of Special Functions
 
-function time(){
-  setTimeout(function(){
-    death.setAttribute("opacity",b);
-    x.setAttribute("opacity",b);
-    y.setAttribute("opacity",b);
-    z.setAttribute("opacity",b);
-    a.setAttribute("opacity",b);
-    time2();
-  }, platform1);
-}
-function time2(){
-  setTimeout(function(){
-    death.setAttribute("opacity",1);
-    x.setAttribute("opacity",1);
-    y.setAttribute("opacity",1);
-    z.setAttribute("opacity",1);
-    a.setAttribute("opacity",1);
-    b = Math.random()/4;
-    platfrom1 = Math.random()*3000;
-    if(d==0){  
-      time();
-    }
-  }, 500);      
-}
-function mice(){
-  var p5X = getX(platform5);
-  var p5Y = getY(platform5);
-  if(b==1){
-    move(platform5,-0.3,-0.01);
-    b=2;
-  }
-  else if(p5X > 107 && b==2){
-    move(platform5,-0.3,-0.01);
-  }
-    else if(p5X <= 107 && b==2){
-    move(platform5,0.01,0.3);
-    b=3;
-  }
-  else if(p5Y < 117 && b==3){
-    move(platform5,0.008,0.3);
-  }
-  else if(p5Y >= 117 && b==3){
-    move(platform5,0.3,0.05);
-    b=4;
-  }    
-  else if(p5X < 140 && b==4){
-    move(platform5,0.3,0.05);
-  }
-  else if(p5X >= 140 && b==4){
-      b=1;
-      setX(platform5,200);
-      setY(platform5,87);
-      endGame();
-      d=0;
-  }
-  if(d==1){  
-    requestAnimationFrame(mice);
-  }
-}
-function platform(){ 
-  p1Y = getY(platform1);
-  p2X = getX(platform2);
-  p3X = getX(platform3);
-  p4X = getX(platform4);
-  p4Y = getY(platform4);
-  if(p1Y < 100 && y==1){    
-    move(platform1,0,0.4);
-  }
-  else if(p1Y >= 100){
-    y=-1;
-    move(platform1,0,-0.4);  
-  }
-  else if(p1Y > 35 && y==-1){    
-    move(platform1,0,-0.4);
-  }
-  else if(p1Y <= 35){
-    y=1;  
-    move(platform1,0,0.4);
-  }
-  if(p2X > 10 && x==1){    
-    move(platform2,-0.4,0.224);
-  }
-  else if(p2X <= 10){
-    x=-1;
-    move(platform2,0.4,-0.224);  
-  }
-  else if(p2X < 98 && x==-1){    
-    move(platform2,0.4,-0.224);
-  }
-  else if(p2X >= 98){
-    x=1;  
-    move(platform2,-0.4,0.224);
-  }
-  if(p3X < 190 && z==1){    
-    move(platform3,0.4,0); 
-  }
-  else if(p3X >= 190){
-    z=-1;
-    move(platform3,-0.4,0);  
-  }
-  else if(p3X > 15 && z==-1){    
-    move(platform3,-0.4,0);
-  }
-  else if(p3X <= 15){
-    z=1;  
-    move(platform3,0.4,0);
-  }
-  if(p4Y > 85 && a==1){ //(190, 132)   
-    move(platform4,0,-0.4); 
-  }
-  else if(p4Y <= 85 && a==1){//(190, 185)
-    a=2;
-    move(platform4,0.4,0);  
-  }
-  else if(p4X <240 && a==2){//(240, 185)    
-    move(platform4,0.4,0);
-  }
-  else if(p4X >= 240 && a==2){
-    a=3;  
-    move(platform4,-0.4,0);
-  }
-  else if(p4X >190 && a==3){  //(190, 132)  
-    move(platform4,-0.4,0);
-  }
-  else if(p4X <= 190 && a==3){
-    a=4;  
-    move(platform4,0,0.4);
-  } 
-  else if(p4Y < 150 && a==4){ //(190, 132)    
-    move(platform4,0,0.4); 
-  }
-  else if(p4Y >= 150 && a==4){
-    a=1;
-    move(platform4,-0.4,0);  
-  }
-  requestAnimationFrame(platform);    
-}
-
+//When Button is Clicked
 function startLevel(){
-///
+//Level Specific
   if(level==2){
   boy.setAttribute("stroke","#4A708B");
   boy1.setAttribute("stroke","#4A708B");
@@ -720,7 +765,7 @@ function startLevel(){
     b=0;  
     mouseTion();  
   }
-///    
+//End
   attempt = attempt+1;
   if(attempt==1){
     accio.innerHTML = "Attempt: "+attempt;
@@ -739,15 +784,15 @@ function startLevel(){
   canvas.setAttribute("cursor","pointer");
 }
 
+//Reach the Cheese Successfully
 function endLevel(){
-///
+//Level Specific
   if(level==2){
     boy.setAttribute("stroke","yellow");
     boy1.setAttribute("stroke","yellow");
     text2.setAttribute("fill","yellow");  
   }
-    
-///
+//End
   d=1;
   if(level==5){  
     time2();  
@@ -771,6 +816,7 @@ function endLevel(){
   text2.addEventListener('click', startGame);
 }
 
+//Hover Over the Abyss(Death)
 function endGame(){
   mouse.setAttribute("display","none");
   button.setAttribute("fill","red");
@@ -789,6 +835,7 @@ function endGame(){
   }
 }
 
+//Intro(Ready?)
 function startScreen(){
   makeRect(0,0,300,200,"black",0.6);
   boy1 = makeRect(98, 68, 104, 34, "black");
@@ -802,7 +849,7 @@ function startScreen(){
   text2.addEventListener('click', startGame);
 }
 
-// Ms. Squire's Codes
+//////////////////////////////////Ms. Squire's Codes///////////////////////////////////////
 
 function getX(shape) {
   if (shape.hasAttribute("x")) {
