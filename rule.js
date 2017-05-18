@@ -774,17 +774,17 @@ function startLevel(){
     accio.innerHTML = "Attempts: "+attempt;
   }
   if(level!=10){  
-  var pt = canvas.createSVGPoint()
-  pt.x = event.clientX
-  pt.y = event.clientY
-  var svgPt = pt.matrixTransform(canvas.getScreenCTM().inverse()) 
-  mouseX = svgPt.x-8;
-  mouseY = svgPt.y-15.5;
+    var pt = canvas.createSVGPoint()
+    pt.x = event.clientX
+    pt.y = event.clientY
+    var svgPt = pt.matrixTransform(canvas.getScreenCTM().inverse()) 
+    mouseX = svgPt.x-8;
+    mouseY = svgPt.y-15.5;
     mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", mouseX, mouseY, 15, 15);
+    canvas.addEventListener('mousemove', moveMouse);    
   }
   mouse.setAttribute("opacity",1);
   death.addEventListener('mouseover',endGame);
-  canvas.addEventListener('mousemove', moveMouse);
   button.setAttribute("fill","#FF8C00");
   button.removeEventListener("click",startLevel);
   canvas.setAttribute("cursor","pointer");
