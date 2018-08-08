@@ -1,35 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Amatic+SC|Satisfy|Covered+By+Your+Grace');
 
-#texto{
-  text-align: center;
-  font-family: Covered By Your Grace;
-  color: black;
-  font-size: 150%;
-  background-color: rgba(255,182,193,0.6);
-}
-#title{
-  text-align: center;
-  text-decoration: underline;
-  font-family: Indie Flower;
-  font-style: italic;
-  color: black;
-  font-size: 250%;
-  background-color: rgba(255,182,193,0.6);
-}
-#canvas{
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 body{
-  background-image: url("https://ih1.redbubble.net/image.267627132.7382/flat,800x800,075,t.u2.jpg");
+  background-image: url("Images/Background/Cheese Background.jpg");
 }
-#con{
-  position:fixed;
-  bottom:10px;
-  background-image: url("http://wallpapercave.com/wp/aZAy7vW.jpg");
-  padding: 12px;
-}
+
 input{
   border-right: solid blue 2px;
   background: #eef7fa;
@@ -37,6 +11,7 @@ input{
   font-family: Dancing Script;  
   margin: 5px;
 }
+
 button{
   color: #138808;
   background-color: #ffffcc;
@@ -48,4 +23,35 @@ button{
   margin-left: 150px;
   padding-left: 12px;
   padding-right: 12px;
+}
+
+#texto{
+  text-align: center;
+  font-family: Covered By Your Grace;
+  color: black;
+  font-size: 150%;
+  background-color: rgba(255,182,193,0.8);
+}
+
+#title{
+  text-align: center;
+  text-decoration: underline;
+  font-family: Indie Flower;
+  font-style: italic;
+  color: black;
+  font-size: 250%;
+  background-color: rgba(255,182,193,0.6);
+}
+
+#canvas{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#con{
+  position:fixed;
+  bottom:10px;
+  background-image: url("Images/Background/Blue Background.jpg");
+  padding: 12px;
 }

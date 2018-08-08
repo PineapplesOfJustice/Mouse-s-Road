@@ -97,7 +97,7 @@ function moveMouse(){
 
 ////////////////////////////////////////////Death Location////////////////////////////////////////////////
 function xShape(){
-  makeImage("https://img.clipartfest.com/14d203b6aca7377ec9c33486d52b1066_x-no-background-clipart-1-x-out-clipart-no-background_600-532.png",mouseX+6,mouseY+14,6,6)
+  makeImage("Images/Mouse Icons/Red X.jpg",mouseX+6,mouseY+14,6,6)
 }
 
 ////////////////////////////////////////////Level Content////////////////////////////////////////////////
@@ -113,7 +113,7 @@ function startGame(){
     makeCircle(58,60,8,"black");
     button = makeCircle(58,60,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",233, 80, 15,15);
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",233, 80, 15,15);
   }
     
   //Level 1//
@@ -125,7 +125,7 @@ function startGame(){
     makeCircle(73,115,8,"black");
     button = makeCircle(73,115,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",181, 32.5, 15,15);
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",181, 32.5, 15,15);
     texto.innerHTML = "Got Cheese? How can a mouse crosss empty space? Wouldn't it be nice if there was a bridge...";
   }
     
@@ -135,14 +135,14 @@ function startGame(){
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     boy1 = makePolyline("163 11 95 88 123 88 95 128 123 128 86 188 168 105 141 105 164 68 137 68 162 13","yellow",11);
     text2 =  makeText("Flash",200,180,50,"Amatic SC","yellow");     
-    boy = makeCircle(132, 100, 64, "none");
+    boy = makeCircle(132, 100, 64, "none", 1);
     boy.setAttribute("stroke-width", 9);
     boy.setAttribute("stroke", "yellow");
     boy1.setAttribute("stroke-linecap","butt");
     makeCircle(91,162,8,"black");
     button = makeCircle(91,162,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",125, 18, 15,15); 
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",125, 18, 15,15); 
     texto.innerHTML = "Empty space or is it? Death will show you the way. Solve it in a flash and the you will be surprise by what you see.";
   }
     
@@ -165,7 +165,7 @@ function startGame(){
     makeCircle(26,50,8,"black");
     button = makeCircle(26,50,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",247, 167, 15,15); 
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",247, 167, 15,15); 
     texto.innerHTML = "Cross the bridge and good luck. Your journey will be frustrating.";
     platform();
   }
@@ -180,8 +180,8 @@ function startGame(){
     makeCircle(210,63,8,"black");
     button = makeCircle(210,63,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",153, 121, 16,16);
-    platform5 = makeImage("https://img.clipartfest.com/53d5952f53019583fd8c5bfbc212b9cb_pink-mouse-clip-art-mouse-clipart-no-background_298-294.png", 200,87, 15, 15);
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",153, 121, 16,16);
+    platform5 = makeImage("Images/Mouse Icons/Maggie.jpg", 200,87, 15, 15);
     texto.innerHTML = "Race. Race. Race! Beat Maggie with your maneuver speed! Just don't expect her to play fair!"; 
     stopAnimationFrame(platform);//Actually doesn't work! HoHoHo.
   }
@@ -196,7 +196,7 @@ function startGame(){
     makePolyline("232 54 195 46","yellow",13)
     makeCircle(229,71.5,8,"black");
     makeCircle(229,71.5,5,"red");
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",196, 74, 16,16);
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",196, 74, 16,16);
     texto.innerHTML = "Who turned off the light? It will be a dark and stormy night.";
     death = makeRect(0,0,300,200,"black");  
     x = makePolyline("229 60 233 159 51 162 75 96 218 82","black",13)
@@ -205,7 +205,7 @@ function startGame(){
     a = makeCircle(229,71.5,8,"black");
     button = makeCircle(229,71.5,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",196, 74, 16,16,0);  
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",196, 74, 16,16,0);  
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     time();  
@@ -218,7 +218,7 @@ function startGame(){
     makeCircle(120,110,8,"black");
     button = makeCircle(120,110,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",160, 80, 16,16);  
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",160, 80, 16,16);  
     texto.innerHTML = "Hey, there is no pathway! Well, build one!";
   } 
     
@@ -258,13 +258,13 @@ function startGame(){
     button = makeCircle(143,93,5,"red");
     button.addEventListener("click",startLevel);
     cheese = []; 
-    cheese[1] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",136, 27, 15,15);
+    cheese[1] = makeImage("Images/Mouse Icons/Cheese.jpg",136, 27, 15,15);
       cheese
-    cheese[2] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",188, 60, 15,15); 
-    cheese[3] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",188, 123, 15,15); 
-    cheese[4] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",135, 145, 15,15); 
-    cheese[5] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",82, 123, 15,15); 
-    cheese[6] = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",82, 60, 15,15); 
+    cheese[2] = makeImage("Images/Mouse Icons/Cheese.jpg",188, 60, 15,15); 
+    cheese[3] = makeImage("Images/Mouse Icons/Cheese.jpg",188, 123, 15,15); 
+    cheese[4] = makeImage("Images/Mouse Icons/Cheese.jpg",135, 145, 15,15); 
+    cheese[5] = makeImage("Images/Mouse Icons/Cheese.jpg",82, 123, 15,15); 
+    cheese[6] = makeImage("Images/Mouse Icons/Cheese.jpg",82, 60, 15,15); 
     texto.innerHTML = "The Six Cheese:<br><li>One is drugged, one is safe, and the rest are poisoned.</li><li>Beware the circular square, for they will bring no good.</li><li>Special are the diagonals, but stay away from blue.</li><li>I wonder, how the purple will taste, and the red?</li>";
     clock();  
   }
@@ -290,7 +290,7 @@ function startGame(){
     makeCircle(229,71.5,8,"black");
     button = makeCircle(229,71.5,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",139, 95, 16,16);  
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",139, 95, 16,16);  
     track = makeText("Level "+level+":",12,27,20,"Amatic SC","white");
     accio = makeText("Attempt:  "+attempt,216,27,20,"Amatic SC","white");
     texto.innerHTML = "A narrow path for a narrow mouse. Don't worry, the floor is safe. I can't guarentee that for the walls though!";
@@ -308,8 +308,8 @@ function startGame(){
     makeCircle(92,59,8,"black");
     button = makeCircle(92,59,5,"red");
     button.addEventListener("click",startLevel);
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",199, 50, 16,16);
-    platform5 = makeImage("https://img.clipartfest.com/53d5952f53019583fd8c5bfbc212b9cb_pink-mouse-clip-art-mouse-clipart-no-background_298-294.png", 88,68, 15, 15);
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",199, 50, 16,16);
+    platform5 = makeImage("Images/Mouse Icons/Maggie.jpg", 88,68, 15, 15);
     texto.innerHTML = "Rematch! Can you best Maggie once again?";
   }
     
@@ -327,8 +327,8 @@ function startGame(){
     makeCircle(58,60,8,"black");
     button = makeCircle(58,60,5,"red");
     button.addEventListener("click",startLevel);                    
-    cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",233, 80, 15,15);
-    mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", 59,66, 15, 15);
+    cheese = makeImage("Images/Mouse Icons/Cheese.jpg",233, 80, 15,15);
+    mouse = makeImage("Images/Mouse Icons/Mouse.png", 59,66, 15, 15);
     texto.innerHTML = "Finale! Control the platform with WASD, I will be moving the mouse this time around!";
     loopHole();  
   }
@@ -694,7 +694,7 @@ function loopHole(){
 
 //Level 11 and After//
 function appear(){
-  cheese = makeImage("http://img.clipartall.com/cheese-clipart-cheese-clipart-1738_1386.png",142, 173, 15,15);
+  cheese = makeImage("Images/Mouse Icons/Cheese.jpg",142, 173, 15,15);
 }
 
 function lostPlatforms(){
@@ -780,7 +780,7 @@ function startLevel(){
     var svgPt = pt.matrixTransform(canvas.getScreenCTM().inverse()) 
     mouseX = svgPt.x-8;
     mouseY = svgPt.y-15.5;
-    mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", mouseX, mouseY, 15, 15);
+    mouse = makeImage("Images/Mouse Icons/Mouse.png", mouseX, mouseY, 15, 15);
     canvas.addEventListener('mousemove', moveMouse);    
   }
   mouse.setAttribute("opacity",1);
@@ -837,7 +837,7 @@ function endGame(){
     xShape();
   }
   if(level==10){
-    mouse = makeImage("https://img.clipartfest.com/1b742d0aa54afc97a54f90d24c61fd2d_mouse-clip-art-photos-maus-clipart-bilder_282-300.png", 59,66, 15, 15); 
+    mouse = makeImage("Images/Mouse Icons/Mouse.png", 59,66, 15, 15); 
   }
 }
 
